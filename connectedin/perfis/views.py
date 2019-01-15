@@ -6,6 +6,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-def perfis(request):
+def exibir(request):
     return render(request, 'perfis.html')
+
+
 
