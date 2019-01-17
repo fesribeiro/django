@@ -19,5 +19,6 @@ from perfis import views
 
 urlpatterns = [
     path('', views.index),
-    re_path(r'^perfis/\d+$', views.perfis)
+    re_path(r'^perfis/(?P<perfil_id>\d+)$', views.exibir),
+
 ]
