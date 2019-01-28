@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>Bem vindo ao ConnectedIn !</h1>
-{% if perfis %}
-<ul>
-    {% for perfil in perfis %}
-    <li>{{perfil.nome}} / {{perfil.email}} &nbsp; <a href="{% url 'Exibir' perfil.id%}">Exibir</a></li> 
-    {% endfor %}
-</ul>
-{% else %}
-<p>Nenhum perfil encontrado</p>
-{% endif %}
-<!-- <a href="perfis">Perfil</a>     -->
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block body %}
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Todos os perfis</strong>
+        </div>
+            {% if perfis %}
+            <ul>
+                {% for perfil in perfis %}
+                <li>{{perfil.nome}} / {{perfil.email}} &nbsp; <a href="{% url 'Exibir' perfil.id%}">Exibir</a> &nbsp; &nbsp; <a href="{% url 'Convidar' perfil.id%}">Convidar</a> </li> 
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum perfil encontrado</p>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
