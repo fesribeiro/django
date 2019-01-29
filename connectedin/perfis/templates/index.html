@@ -15,5 +15,51 @@
             <p>Nenhum perfil encontrado</p>
             {% endif %}
     </div>
+
+    <div class="panel panel-default">
+        {% with total_de_convites=perfil_logado.convites_recebidos.count %}
+            {% if perfil_logado.convites_recebidos.count %}
+            <div class="panel-heading">
+                <strong>Você tem {{ total_de_convites }} Convite{{ total_de_convites |pluralize}} aguardando  aprovação</strong>
+            </div>
+            <ul class="list-group">
+                {% for convite in perfil_logado.convites_recebidos.all %}
+
+                <li class="list-group-item">
+                    {{ convite.solicitante.nome }}
+                    <a href="{% url 'Aceitar' convite.id %}" class="pull-right">Aceitar</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="panel-body">
+                <p>Nenhum convite encontrado :( </p>
+            </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="panel panel-default">
+            {% with total_de_contatos=perfil_logado.contatos.count %}
+                {% if total_de_contatos %}
+                <div class="panel-heading">
+                    <strong>Você tem {{ total_de_contatos }} Contato{{ total_de_contatos |pluralize}} </strong>
+                </div>
+                <ul class="list-group">
+                    {% for contato in perfil_logado.contatos.all %}
+    
+                    <li class="list-group-item">
+                        <a href="{% url 'Exibir' contato.id %}"> {{ contato.nome }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="panel-body">
+                    <p>Você não possui contatos no momento :( </p>
+                </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    
+
 </div>
 {% endblock %}

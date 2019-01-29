@@ -20,6 +20,7 @@ from perfis import views
 urlpatterns = [
     path('', views.index, name='index'),
     re_path(r'^perfis/(?P<perfil_id>\d+)$', views.exibir, name='Exibir'),
-    re_path(r'^perfis/(?P<perfil_id>\d+)/convidar$', views.convidar, name='Convidar')
+    re_path(r'^perfis/(?P<perfil_id>\d+)/convidar$', views.convidar, name='Convidar'),
+    re_path(r'convite/(?P<convite_id>\d+)/aceitar$', views.aceitar, name='Aceitar')
 
 ]
